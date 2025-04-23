@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })

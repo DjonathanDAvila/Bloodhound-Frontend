@@ -1,16 +1,22 @@
-<div class="form-container">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field appearance="fill" class="full-width">
+<div class="auth-container">
+  <mat-icon class="logo-icon" fontIcon="photo_camera"></mat-icon>
+  <h2>Login</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="Your email address">
+      <input matInput formControlName="email" placeholder="Your email address" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Your password">
+      <input matInput type="password" formControlName="password" placeholder="Your password" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Login</button>
+    <button mat-raised-button color="primary" class="full-width">Login</button>
   </form>
-  <p class="link-text">Don't have an account? <a routerLink="/auth/signup">Sign up</a></p>
+
+  <p class="switch-text">
+    Don’t have an account? <a routerLink="/auth/signup">Sign up</a>
+  </p>
 </div>

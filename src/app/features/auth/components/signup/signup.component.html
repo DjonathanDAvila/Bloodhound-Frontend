@@ -1,26 +1,32 @@
-<div class="form-container">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field appearance="fill" class="full-width">
+<div class="auth-container">
+  <mat-icon class="logo-icon" fontIcon="photo_camera"></mat-icon>
+  <h2>Sign up</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username" placeholder="Your username">
+      <input matInput formControlName="username" placeholder="Your first name" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="Your email address">
+      <input matInput formControlName="email" placeholder="Your email address" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Your password">
+      <input matInput type="password" formControlName="password" placeholder="Your password" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Confirm Password</mat-label>
-      <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm your password">
+      <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm your password" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Sign Up</button>
+    <button mat-raised-button color="primary" class="full-width">Sign Up</button>
   </form>
-  <p class="link-text">Already have an account? <a routerLink="/auth/login">Sign in</a></p>
+
+  <p class="switch-text">
+    Already have an account? <a routerLink="/auth/login">Sign in</a>
+  </p>
 </div>

@@ -1,17 +1,35 @@
-.form-container {
-  width: 300px;
-  margin: auto;
-  margin-top: 100px;
-  background-color: #1e1e1e;
+.auth-container {
+  max-width: 360px;
+  margin: 80px auto;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  background-color: #1f1f1f;
+  text-align: center;
+}
+
+.logo-icon {
+  font-size: 48px;
+  color: #f57c00;
+  margin-bottom: 12px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .full-width {
   width: 100%;
 }
 
-.link-text {
-  margin-top: 10px;
-  text-align: center;
+.switch-text {
+  margin-top: 16px;
+  font-size: 14px;
+
+  a {
+    color: #f57c00;
+    text-decoration: none;
+  }
 }
