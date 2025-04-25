@@ -1,2 +1,58 @@
-html, body { height: 100%; background-color: #121212;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@use '@angular/material' as mat;
+@include mat.core();
+
+html,
+body {
+  height: 100%;
+  background-color: #121212;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Paletas personalizadas
+$myapp-primary-palette: mat.m2-define-palette((
+  500: #3a6ea5,
+  100: #5a8dc3,
+  200: #457bb2,
+  400: #27496d,
+  700: #132438,
+  contrast: (
+    500: white,
+    100: black,
+    200: white,
+    400: white,
+    700: white,
+  )
+));
+
+$myapp-accent-palette: mat.m2-define-palette((
+  500: #9DB4C0,
+  100: #D1DFE6,
+  400: #7F9FAE,
+  700: #5E7D8C,
+  contrast: (
+    500: black,
+    100: black,
+    400: white,
+    700: white,
+  )
+));
+
+// Aplicando tons que existem na paleta
+$myapp-theme-primary: mat.m2-define-palette($myapp-primary-palette, 500, 100, 700);
+$myapp-theme-accent: mat.m2-define-palette($myapp-accent-palette, 500, 100, 700);
+$myapp-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Tema dark final
+$myapp-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $myapp-theme-primary,
+    accent: $myapp-theme-accent,
+    warn: $myapp-theme-warn,
+  )
+));
+
+@include mat.all-component-themes($myapp-theme);
