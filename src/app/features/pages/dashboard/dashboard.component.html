@@ -30,20 +30,40 @@
     </mat-card>
   </section>
 
-  <section class="reviews-section">
-    <mat-card class="reviews-card">
-      <div class="empty-state">
-        <mat-icon>code_off</mat-icon>
-        <h2>There are no reviewed Pull Request's</h2>
-        <p>
-          If you have any connected repositories, we will automatically scan all
-          new PRs. Just open a PR in your connected repository.
-        </p>
-        <div class="actions">
-          <button mat-stroked-button color="primary">Connect Repository</button>
-          <button mat-stroked-button color="primary">Manage Rules</button>
-        </div>
-      </div>
-    </mat-card>
+  <section class="p-6 text-white">
+    <h2 class="text-2xl font-semibold mb-4">Recent code reviews</h2>
+    <table class="w-full text-left text-sm bg-[#1a1a1a] rounded-lg">
+      <thead class="text-gray-400 border-b border-gray-700">
+        <tr>
+          <th class="p-3">Repo</th>
+          <th class="p-3">Pull Request</th>
+          <th class="p-3">Files</th>
+          <th class="p-3">Rules</th>
+          <th class="p-3">Passed</th>
+          <th class="p-3">Failed</th>
+          <th class="p-3">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let review of reviews" class="border-b border-gray-800">
+          <td class="p-3 font-mono">{{ review.repo }}</td>
+          <td class="p-3">{{ review.pullRequest }}</td>
+          <td class="p-3">{{ review.files }}</td>
+          <td class="p-3">{{ review.rules }}</td>
+          <td class="p-3 text-green-400">{{ review.passed }}</td>
+          <td class="p-3 text-red-400">{{ review.failed }}</td>
+          <td class="p-3">
+            <span
+              class="inline-block w-2 h-2 rounded-full"
+              [ngClass]="{
+                'bg-green-500': review.status === 'success',
+                'bg-yellow-500': review.status === 'warning',
+                'bg-red-500': review.status === 'error'
+              }"
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </main>

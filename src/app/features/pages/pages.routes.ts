@@ -6,5 +6,10 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 
 export const pagesRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
-  { path: 'dash', component: MainLayoutComponent, children: [{ path: '', component: DashboardComponent }] }
+  {
+    path: 'main', component: MainLayoutComponent, children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent }
+    ]
+  }
 ];

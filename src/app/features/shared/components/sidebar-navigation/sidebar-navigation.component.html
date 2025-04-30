@@ -4,22 +4,22 @@
   </div>
 
   <nav class="menu">
-    <a routerLink="/dashboard" routerLinkActive="active">
+    <a [routerLink]="'/pages/main/dashboard'">
       <mat-icon>dashboard</mat-icon>
       Dashboard
     </a>
-    <a routerLink="/rules" routerLinkActive="active">
+    <a [routerLink]="'/rules'" routerLinkActive="active">
       <mat-icon>rule</mat-icon>
       Rules
     </a>
-    <a routerLink="/repositories" routerLinkActive="active">
+    <a [routerLink]="'/repositories'" routerLinkActive="active">
       <mat-icon>storage</mat-icon>
       Repositories
     </a>
   </nav>
 
   <div class="account-section">
-    <a routerLink="/account/settings" routerLinkActive="active">
+    <a [routerLink]="'/account/settings'" routerLinkActive="active">
       <mat-icon>settings</mat-icon>
       Settings
     </a>
