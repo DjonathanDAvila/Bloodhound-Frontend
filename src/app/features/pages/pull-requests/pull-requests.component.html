@@ -1,0 +1,31 @@
+<div class="pull-requests-wrapper">
+  <div class="breadcrumb">Dashboard / Repositories / <strong>Pull Requests</strong></div>
+  <h2 class="title">Pull Requests</h2>
+
+  <div class="table-container">
+    <table class="pull-requests-table">
+      <thead>
+        <tr>
+          <th>Repo</th>
+          <th>Pull Request</th>
+          <th>Files</th>
+          <th>Rules</th>
+          <th>Passed</th>
+          <th>Failed</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pr of pullRequests">
+          <td>{{ pr.repoName }}</td>
+          <td><a href="#">{{ pr.id }}</a></td>
+          <td>{{ pr.files }}</td>
+          <td>{{ pr.rules }}</td>
+          <td><span class="status passed">{{ pr.passed }}</span></td>
+          <td><span class="status failed">{{ pr.failed }}</span></td>
+          <td><span class="status dot">●</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

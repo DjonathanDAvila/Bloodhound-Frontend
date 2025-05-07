@@ -4,7 +4,8 @@
     <button class="pick-button">Pick a repository</button>
   </div>
 
-  <div class="repo-card" *ngFor="let repo of repositories">
+  <div class="repo-card" *ngFor="let repo of repositories" (click)="navigateToPullRequests(repo.name)"
+    [class.hovered]="hoveredRepo === repo" (mouseenter)="hoveredRepo = repo" (mouseleave)="hoveredRepo = null">
     <div class="repo-info">
       <img class="avatar" [src]="repo.avatarUrl" alt="Avatar" />
       <div class="text">

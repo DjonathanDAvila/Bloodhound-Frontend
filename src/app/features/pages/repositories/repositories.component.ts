@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Repository } from '../../../core/models/repository.model';
 import { RepositoriesService } from '../../../core/services/repositories.service';
@@ -13,12 +14,18 @@ import { RepositoriesService } from '../../../core/services/repositories.service
 })
 export class RepositoriesComponent implements OnInit {
   repositories: Repository[] = [];
+  hoveredRepo: Repository | null = null;
 
-  constructor(private repoService: RepositoriesService) {}
+  constructor(private repoService: RepositoriesService, private router: Router) { }
 
   ngOnInit(): void {
     this.repoService.getRepositories().subscribe((data) => {
       this.repositories = data;
     });
+  }
+
+  navigateToPullRequests(repoName: string) {
+    debugger
+    this.router.navigate(['pages', 'main', 'repositories', repoName, 'pull-requests']);
   }
 }
