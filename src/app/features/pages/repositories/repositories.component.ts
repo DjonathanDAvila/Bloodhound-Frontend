@@ -16,16 +16,19 @@ export class RepositoriesComponent implements OnInit {
   repositories: Repository[] = [];
   hoveredRepo: Repository | null = null;
 
-  constructor(private repoService: RepositoriesService, private router: Router) { }
+  constructor(private repoService: RepositoriesService, private router: Router) {}
 
   ngOnInit(): void {
     this.repoService.getRepositories().subscribe((data) => {
-      this.repositories = data;
+      // Adiciona avatar fictício se não vier do backend
+      this.repositories = data.map(repo => ({
+        ...repo,
+        avatarUrl: `/icons/github.png`
+      }));
     });
   }
 
   navigateToPullRequests(repoName: string) {
-    debugger
     this.router.navigate(['pages', 'main', 'repositories', repoName, 'pull-requests']);
   }
 }
