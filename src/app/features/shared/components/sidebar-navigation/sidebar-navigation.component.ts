@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar-navigation',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgIf, MatIconModule, MatButtonModule, RouterModule],
+  imports: [RouterLink, RouterLinkActive, MatIconModule, MatButtonModule, RouterModule],
   templateUrl: './sidebar-navigation.component.html',
   styleUrl: './sidebar-navigation.component.scss'
 })

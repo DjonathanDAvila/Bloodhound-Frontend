@@ -16,12 +16,12 @@ export class RepositoriesComponent implements OnInit {
   repositories: Repository[] = [];
   hoveredRepo: Repository | null = null;
 
-  constructor(private repoService: RepositoriesService, private router: Router) {}
+  constructor(private repoService: RepositoriesService, private router: Router) { }
 
   ngOnInit(): void {
     this.repoService.getRepositories().subscribe((data) => {
       // Adiciona avatar fictício se não vier do backend
-      this.repositories = data.map(repo => ({
+      this.repositories = data.map((repo: any) => ({
         ...repo,
         avatarUrl: `/icons/github.png`
       }));
