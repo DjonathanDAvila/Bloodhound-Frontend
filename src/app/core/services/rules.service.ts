@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { MOCK_RULES } from '../mock-data/rules.mock';
-import { Rules } from '../models/rules.model';
+import { RuleListItem } from '../models/RuleListItem.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class RulesService {
 
   constructor() { }
 
-  getRules(): Observable<Rules[]> {
+  getRules(): Observable<RuleListItem[]> {
     return of(MOCK_RULES);
   }
 }

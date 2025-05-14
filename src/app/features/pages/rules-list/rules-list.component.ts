@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
 
-import { Rules } from '../../../core/models/rules.model';
+import { RuleListItem } from '../../../core/models/RuleListItem.model';
 import { RulesService } from '../../../core/services/rules.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { RulesService } from '../../../core/services/rules.service';
   styleUrl: './rules-list.component.scss'
 })
 export class RulesListComponent implements OnInit {
-  rules: Rules[] = [];
+  rules: RuleListItem[] = [];
   displayedColumns = ['name', 'description', 'reposCount', 'createdBy', 'createdAt', 'updatedBy', 'updatedAt'];
 
   constructor(private rulesService: RulesService, private router: Router) { }
@@ -25,8 +25,11 @@ export class RulesListComponent implements OnInit {
     this.rulesService.getRules().subscribe(data => this.rules = data);
   }
 
-  onEdit(id: string) {
-    this.router.navigate(['pages', 'main', 'rules', 'create']);
+  // onEdit(id: string) {
+  //   this.router.navigate(['pages', 'main', 'rules', 'create']);
+  // }
 
+  onEdit(id: string) {
+    this.router.navigate(['pages', 'main', 'rules', 'edit', id]);
   }
 }

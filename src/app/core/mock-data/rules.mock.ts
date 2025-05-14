@@ -1,6 +1,6 @@
-import { Rules } from "../models/rules.model";
+import { RuleListItem } from "../models/RuleListItem.model";
 
-export const MOCK_RULES: Rules[] = [
+export const MOCK_RULES: RuleListItem[] = [
   {
     id: '1',
     name: 'DRY',

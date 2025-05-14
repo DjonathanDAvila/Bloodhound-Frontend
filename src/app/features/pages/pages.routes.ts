@@ -16,6 +16,7 @@ export const pagesRoutes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'rules', component: RulesListComponent },
       { path: 'rules/create', component: CreateEditRuleComponent },
+      { path: 'rules/edit/:id', component: CreateEditRuleComponent },
       { path: 'repositories', component: RepositoriesComponent },
       { path: 'repositories/:repo/pull-requests', component: PullRequestsComponent }
     ]

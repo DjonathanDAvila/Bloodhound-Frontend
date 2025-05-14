@@ -1,4 +1,4 @@
-export interface Rules {
+export interface RuleListItem {
   id: string;
   name: string;
   description: string;

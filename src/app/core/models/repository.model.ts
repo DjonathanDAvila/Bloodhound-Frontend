@@ -5,4 +5,5 @@ export interface Repository {
   ownerId: number;
   context: string;
   avatarUrl?: string; // opcional, pois não vem da API, mas podemos mockar
+  selected?: boolean;
 }
