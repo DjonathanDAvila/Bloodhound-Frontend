@@ -12,5 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
-
+  loginWithGithub() {
+    window.location.href = 'http://localhost:5021/api/v1/github/login';
+  }
 }

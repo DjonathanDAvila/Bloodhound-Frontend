@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { LandingComponent } from '../pages/landing/landing.component';
+import { AuthGuard } from '../auth/auth.guard/auth.guard';
 import { CreateEditRuleComponent } from './create-edit-rule/create-edit-rule.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
@@ -9,9 +9,11 @@ import { RepositoriesComponent } from './repositories/repositories.component';
 import { RulesListComponent } from './rules-list/rules-list.component';
 
 export const pagesRoutes: Routes = [
-  { path: 'landing', component: LandingComponent },
   {
-    path: 'main', component: MainLayoutComponent, children: [
+    path: 'main',
+    component: MainLayoutComponent,
+    canActivateChild: [AuthGuard],
+    children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'rules', component: RulesListComponent },
