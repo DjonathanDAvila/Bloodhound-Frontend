@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+
+import { PullRequest } from '../models/pull-request.model';
+import { map, of } from 'rxjs';
 
 import { MOCK_PULL_REQUESTS } from '../mock-data/pull-requests.mock';
 
@@ -7,9 +10,27 @@ import { MOCK_PULL_REQUESTS } from '../mock-data/pull-requests.mock';
   providedIn: 'root'
 })
 export class PullRequestService {
+  private readonly BASE_URL = 'http://localhost:5021/api/v1/repositories';
 
-  constructor() { }
-  getPullRequestsByRepo(repo: string) {
-    return of(MOCK_PULL_REQUESTS.filter(pr => pr.repoName === repo));
+  constructor(private http: HttpClient) { }
+
+  getPullRequestsByRepo(repositoryId: number) {
+    debugger
+    return this.http.get<PullRequest[]>(`${this.BASE_URL}/${repositoryId}/pullrequests`, {
+      params: {
+        page: '0',
+        size: '10',
+      },
+    }).pipe(
+      map((repos) => {
+        console.log('Pull-requests retornados da API:', repos);
+        return repos;
+      })
+    );
   }
+
+  //Mock
+  // getPullRequestsByRepo(repo: string) {
+  //   return of(MOCK_PULL_REQUESTS.filter(pr => pr.repoName === repo))
+  // };
 }

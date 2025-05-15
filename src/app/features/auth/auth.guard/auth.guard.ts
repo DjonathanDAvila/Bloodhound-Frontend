@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  CanActivateChild,
-  Router,
-  UrlTree
-} from '@angular/router';
+import { CanActivate, CanActivateChild, Router, UrlTree } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   private isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
@@ -26,10 +21,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   private checkAuth(): boolean | UrlTree {
     if (this.isAuthenticated()) {
-      debugger
       return true;
     } else {
-      debugger
       return this.router.parseUrl('auth/signin');
     }
   }
