@@ -12,7 +12,7 @@ export const pagesRoutes: Routes = [
   {
     path: 'main',
     component: MainLayoutComponent,
-    canActivateChild: [AuthGuard],
+    canActivateChild: [],//AuthGuard
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },

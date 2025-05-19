@@ -5,17 +5,21 @@
     <div class="left-form">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
+        <input matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Rule *</mat-label>
-        <textarea matInput formControlName="description" rows="5"
-          placeholder="Try to be as descriptive as possible."></textarea>
+        <textarea matInput formControlName="text" rows="5" placeholder="Try to be as descriptive as possible.">
+        </textarea>
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit">
         {{ isEditMode ? 'Save' : 'Create' }}
+      </button>
+
+      <button *ngIf="isEditMode" mat-raised-button color="warn" type="button" (click)="onDelete()">
+        Delete
       </button>
     </div>
 
@@ -29,9 +33,11 @@
         <mat-label>Search for your repo...</mat-label>
         <input matInput />
       </mat-form-field>
+
       <div *ngIf="repositories.length > 0">
         <div *ngFor="let repo of repositories" class="repo-card">
-          <mat-checkbox [(ngModel)]="repo.selected" [name]="'checkbox_' + repo.id">
+          <mat-checkbox [(ngModel)]="repo.selected" [ngModelOptions]="{ standalone: true }"
+            [name]="'checkbox_' + repo.id" (change)="onRepositorySelectChange(repo, $event.checked)">
             <strong>{{ repo.name }}</strong>
             <span class="repo-owner">{{ repo.ownerId }}</span>
           </mat-checkbox>

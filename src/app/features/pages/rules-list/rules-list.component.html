@@ -1,41 +1,41 @@
 <div class="rules-container" *ngIf="rules.length; else noRules">
   <div class="header">
     <h2>Rules</h2>
-    <button mat-raised-button color="primary" [routerLink]="'/pages/main/rules/create'">
+    <button mat-raised-button color="primary" (click)="onCreate()">
       <mat-icon>add</mat-icon> Create a rule
     </button>
   </div>
 
   <table mat-table [dataSource]="rules" class="mat-elevation-z1">
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let rule">{{ rule.name }}</td>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let rule">{{ rule.id }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Rule</th>
+    <ng-container matColumnDef="repositoryId">
+      <th mat-header-cell *matHeaderCellDef>Repository</th>
       <td mat-cell *matCellDef="let rule">
-        <span class="rule-chip">{{ rule.description }}</span>
+        <span class="rule-chip">{{ rule.repositoryId }}</span>
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="reposCount">
-      <th mat-header-cell *matHeaderCellDef>Repos</th>
-      <td mat-cell *matCellDef="let rule">{{ rule.reposCount }}</td>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let rule">{{ rule.title }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="createdBy">
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef>Rule</th>
+      <td mat-cell *matCellDef="let rule">{{ rule.text }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="userId">
       <th mat-header-cell *matHeaderCellDef>Created by</th>
-      <td mat-cell *matCellDef="let rule">{{ rule.createdBy }}</td>
+      <td mat-cell *matCellDef="let rule">{{ rule.userId }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created at</th>
-      <td mat-cell *matCellDef="let rule">{{ rule.createdAt }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="updatedBy">
+    <!-- <ng-container matColumnDef="updatedBy">
       <th mat-header-cell *matHeaderCellDef>Updated by</th>
       <td mat-cell *matCellDef="let rule">{{ rule.updatedBy || 'Not updated yet' }}</td>
     </ng-container>
@@ -43,7 +43,7 @@
     <ng-container matColumnDef="updatedAt">
       <th mat-header-cell *matHeaderCellDef>Updated at</th>
       <td mat-cell *matCellDef="let rule">{{ rule.updatedAt }}</td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="rule-row" (click)="onEdit(row.id)"></tr>
@@ -56,7 +56,7 @@
     <p class="title">There are no rules...</p>
     <p>Go ahead and create a rule, which you can use to apply to any repository you want.</p>
     <div class="actions">
-      <button mat-raised-button color="primary" routerLink="/rules/create">Create a rule</button>
+      <button mat-raised-button color="primary" (click)="onCreate()">Create a rule</button>
       <button mat-button>Rule templates</button>
     </div>
   </div>
