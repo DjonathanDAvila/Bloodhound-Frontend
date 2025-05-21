@@ -3,11 +3,17 @@
   <h2>Sign in</h2>
 
   <div class="card">
-    <button mat-button class="github-btn" (click)="loginWithGithub()">
-      <mat-icon svgIcon="github"></mat-icon>
-      <!-- Continue with GitHub -->
-      Continuar com GitHub
-    </button>
+    <ng-container *ngIf="!isLoading; else loading">
+      <button mat-button class="github-btn" (click)="loginWithGithub()">
+        <mat-icon svgIcon="github"></mat-icon>
+        <!-- Continue with GitHub -->
+        Continuar com GitHub
+      </button>
+    </ng-container>
+
+    <ng-template #loading>
+      <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
     <!-- <p class="signup-text">
       Don’t have an account?
       Não tem uma conta?
