@@ -28,7 +28,9 @@ export class RepositoriesComponent implements OnInit {
     });
   }
 
-  navigateToPullRequests(repoName: string) {
-    this.router.navigate(['pages', 'main', 'repositories', repoName, 'pull-requests']);
+  navigateToPullRequests(repoId: number, repoName: string) {
+    const slug = repoName;
+    this.router.navigate(['pages', 'main', 'repositories', repoId, slug, 'pull-requests']);
   }
+
 }

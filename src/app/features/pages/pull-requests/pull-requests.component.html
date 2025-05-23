@@ -1,29 +1,26 @@
 <div class="pull-requests-wrapper">
   <div class="breadcrumb">Dashboard / Repositories / <strong>Pull Requests</strong></div>
-  <h2 class="title">Pull Requests</h2>
+  <h2 class="title">{{repoName}}</h2>
+  <!-- <h2 class="title">Pull Requests {{repoName}}</h2> -->
 
   <div class="table-container">
     <table class="pull-requests-table">
       <thead>
         <tr>
-          <th>Repo</th>
           <th>Pull Request</th>
-          <th>Files</th>
-          <th>Rules</th>
-          <th>Passed</th>
-          <th>Failed</th>
+          <th>Branch name</th>
           <th>Status</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let pr of pullRequests">
-          <td>{{ pr.repoName }}</td>
-          <td><a href="#">{{ pr.id }}</a></td>
-          <td>{{ pr.files }}</td>
-          <td>{{ pr.rules }}</td>
-          <td><span class="status passed">{{ pr.passed }}</span></td>
-          <td><span class="status failed">{{ pr.failed }}</span></td>
-          <td><span class="status dot">●</span></td>
+          <td>
+            <a [href]="pr.url" target="_blank" rel="noopener noreferrer">
+              {{ pr.number }}
+            </a>
+          </td>
+          <td>{{ pr.branch }}</td>
+          <td>{{ pr.status }}</td>
         </tr>
       </tbody>
     </table>

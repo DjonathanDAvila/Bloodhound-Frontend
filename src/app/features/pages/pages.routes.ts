@@ -20,7 +20,7 @@ export const pagesRoutes: Routes = [
       { path: 'rules/create', component: CreateEditRuleComponent },
       { path: 'rules/edit/:id', component: CreateEditRuleComponent },
       { path: 'repositories', component: RepositoriesComponent },
-      { path: 'repositories/:repo/pull-requests', component: PullRequestsComponent }
+      { path: 'repositories/:repo/:name/pull-requests', component: PullRequestsComponent }
     ]
   }
 ];

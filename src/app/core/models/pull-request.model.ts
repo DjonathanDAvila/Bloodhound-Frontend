@@ -1,10 +1,10 @@
 export interface PullRequest {
   id: number;
-  repoName: string;
-  pullRequest: string;
-  files: number;
-  rules: number;
-  passed: number;
-  failed: number;
+  repositoryId: number;
+  userId: number;
+  url: string; // API URL do GitHub
+  html_url?: string; // Será preenchido após requisição
+  number: number;
+  branch: string;
   status: string;
 }

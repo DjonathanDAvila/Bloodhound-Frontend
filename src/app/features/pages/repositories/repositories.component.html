@@ -6,7 +6,7 @@
 
   <div class="repo-card"
        *ngFor="let repo of repositories"
-       (click)="navigateToPullRequests(repo.name)"
+       (click)="navigateToPullRequests(repo.id, repo.name)"
        [class.hovered]="hoveredRepo === repo"
        (mouseenter)="hoveredRepo = repo"
        (mouseleave)="hoveredRepo = null">
