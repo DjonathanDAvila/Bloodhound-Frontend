@@ -10,7 +10,8 @@ import { MOCK_PULL_REQUESTS } from '../mock-data/pull-requests.mock';
   providedIn: 'root'
 })
 export class PullRequestService {
-  private readonly BASE_URL = 'http://localhost:5021/api/v1/repositories';
+  // private readonly BASE_URL = 'http://localhost:5021/api/v1/repositories';
+  private readonly BASE_URL = 'https://bloodhound-app.azurewebsites.net/api/v1/repositories';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +19,7 @@ export class PullRequestService {
     debugger
     return this.http.get<PullRequest[]>(`${this.BASE_URL}/${repositoryId}/pullrequests`, {
       params: {
-        page: '0',
+        page: '1',
         size: '10',
       },
     }).pipe(

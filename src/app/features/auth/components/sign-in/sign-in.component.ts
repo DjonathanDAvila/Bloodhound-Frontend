@@ -17,6 +17,6 @@ export class SignInComponent {
 
   loginWithGithub() {
     this.isLoading = true;
-    window.location.href = 'http://localhost:5021/api/v1/github/login';
+    window.location.href = 'https://bloodhound-app.azurewebsites.net/api/v1/github/login';
   }
 }

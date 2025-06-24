@@ -17,7 +17,7 @@ import { RulesService } from '../../../core/services/rules.service';
 })
 export class RulesListComponent implements OnInit {
   rules: RuleListItem[] = [];
-  displayedColumns = ['id', 'repositoryId', 'title', 'text', 'userId'];
+  displayedColumns = ['id', 'repositoryName', 'title', 'text', 'userId'];
 
   constructor(private rulesService: RulesService, private router: Router) { }
 

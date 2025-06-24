@@ -9,7 +9,7 @@ import { Rule } from '../models/rule.model';
 })
 export class RuleService {
 
-  private readonly BASE_URL = 'http://localhost:5021/api/v1/rules';
+  private readonly BASE_URL = 'https://bloodhound-app.azurewebsites.net/api/v1/rules';
 
   constructor(private http: HttpClient) { }
 
