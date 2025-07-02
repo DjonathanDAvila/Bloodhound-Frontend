@@ -16,15 +16,15 @@ export class PullRequestService {
   constructor(private http: HttpClient) { }
 
   getPullRequestsByRepo(repositoryId: number) {
-    debugger
+    // debugger
     return this.http.get<PullRequest[]>(`${this.BASE_URL}/${repositoryId}/pullrequests`, {
       params: {
         page: '1',
-        size: '10',
+        size: '100',
       },
     }).pipe(
       map((repos) => {
-        console.log('Pull-requests retornados da API:', repos);
+        // console.log('Pull-requests retornados da API:', repos);
         return repos;
       })
     );

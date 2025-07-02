@@ -22,12 +22,12 @@ export class AuthCallbackComponent implements OnInit {
       if (expiration) {
         localStorage.setItem('tokenExpiration', expiration);
       }
-      console.log(token)
-      console.log('token')
-      debugger
+      // console.log(token)
+      // console.log('token')
+      // debugger
       this.router.navigate(['/pages/main']);
     } else {
-      debugger
+      // debugger
       this.router.navigate(['/login']);
     }
   }

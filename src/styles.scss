@@ -1,58 +1,94 @@
-@use '@angular/material' as mat;
-@include mat.core();
+/* Variáveis Globais - Tema Dark por padrão */
+// styles.scss
 
-html,
-body {
-  height: 100%;
-  background-color: #121212;
+// 1. Tema: Mapas com as cores
+$themes: (
+  dark: (
+    background: #121212,
+    surface: #1e1e1e,
+    text: #ffffff,
+    subtext: #bbbbbb,
+    border: #2c2c2c,
+    accent: #007bff,
+    accent-hover: #006ae0,
+    card-bg: #1f1f1f,
+    logo-filter: brightness(100%)
+  ),
+  light: (
+    background: #f5f5f5,
+    surface: #ffffff,
+    text: #1a1a1a,
+    subtext: #555555,
+    border: #dddddd,
+    accent: #007bff,
+    accent-hover: #006ae0,
+    card-bg: #ffffff,
+    logo-filter: none
+  )
+);
+
+// 2. Mixin para aplicar variáveis do tema
+@mixin theme($theme-name) {
+  $theme: map-get($themes, $theme-name);
+
+  background-color: map-get($theme, background);
+  color: map-get($theme, text);
+
+  --color-text: #{map-get($theme, text)};
+  --surface: #{map-get($theme, surface)};
+  --subtext: #{map-get($theme, subtext)};
+  --border: #{map-get($theme, border)};
+  --accent: #{map-get($theme, accent)};
+  --accent-hover: #{map-get($theme, accent-hover)};
+  --card-bg: #{map-get($theme, card-bg)};
+  --logo-filter: #{map-get($theme, logo-filter)};
 }
 
+
+// 3. Aplicação dos temas
 body {
+  @include theme(dark);
+  transition: background-color 0.3s, color 0.3s;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// Paletas personalizadas
-$myapp-primary-palette: mat.m2-define-palette((
-  500: #3a6ea5,
-  100: #5a8dc3,
-  200: #457bb2,
-  400: #27496d,
-  700: #132438,
-  contrast: (
-    500: white,
-    100: black,
-    200: white,
-    400: white,
-    700: white,
-  )
-));
+.light-theme {
+  @include theme(light);
+}
 
-$myapp-accent-palette: mat.m2-define-palette((
-  500: #9DB4C0,
-  100: #D1DFE6,
-  400: #7F9FAE,
-  700: #5E7D8C,
-  contrast: (
-    500: black,
-    100: black,
-    400: white,
-    700: white,
-  )
-));
+// 4. Elementos comuns
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+}
 
-// Aplicando tons que existem na paleta
-$myapp-theme-primary: mat.m2-define-palette($myapp-primary-palette, 500, 100, 700);
-$myapp-theme-accent: mat.m2-define-palette($myapp-accent-palette, 500, 100, 700);
-$myapp-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+button {
+  display: flex;
+  align-items: center;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 
-// Tema dark final
-$myapp-theme: mat.m2-define-dark-theme((
-  color: (
-    primary: $myapp-theme-primary,
-    accent: $myapp-theme-accent,
-    warn: $myapp-theme-warn,
-  )
-));
+  // &:hover {
+  //   background-color: var(--accent-hover);
+  // }
+}
 
-@include mat.all-component-themes($myapp-theme);
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  max-width: 120px;
+  // margin: 0 auto 2rem;
+  // display: block;
+  filter: var(--logo-filter);
+}
+

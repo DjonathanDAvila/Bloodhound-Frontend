@@ -167,7 +167,7 @@ export class CreateEditRuleComponent implements OnInit {
 
     this.cdr.detectChanges();
 
-    console.log('repositoryId atualizado no form:', this.form.get('repositoryId')?.value);
+    // console.log('repositoryId atualizado no form:', this.form.get('repositoryId')?.value);
   }
 
   showSuccess(message: string) {

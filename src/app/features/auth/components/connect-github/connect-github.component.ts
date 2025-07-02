@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ConnectGithubComponent {
   connectGithub() {
-    console.log('Redirecting to GitHub...');
+    // console.log('Redirecting to GitHub...');
     // Aqui você implementaria a lógica OAuth, se necessário
   }
 }

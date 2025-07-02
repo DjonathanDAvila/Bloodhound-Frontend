@@ -16,9 +16,10 @@ export class RulesService {
   constructor(private http: HttpClient) { }
 
   getRules(): Observable<RuleListItem[]> {
-  return this.http.get<RuleListItem[]>(this.BASE_URL).pipe(
-    tap((rules) => console.log('Regras carregadas Update:', rules))
-  );
+    return this.http.get<RuleListItem[]>(this.BASE_URL);
+  // return this.http.get<RuleListItem[]>(this.BASE_URL).pipe(
+  //   tap((rules) => console.log('Regras carregadas Update:', rules))
+  // );
 }
 
   getRuleCount(): Observable<number> {

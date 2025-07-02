@@ -1,28 +1,34 @@
-<div class="pull-requests-wrapper">
-  <div class="breadcrumb">Dashboard / Repositories / <strong>Pull Requests</strong></div>
-  <h2 class="title">{{repoName}}</h2>
-  <!-- <h2 class="title">Pull Requests {{repoName}}</h2> -->
-
-  <div class="table-container">
-    <table class="pull-requests-table">
-      <thead>
-        <tr>
-          <th>Pull Request</th>
-          <th>Branch name</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pr of pullRequests">
-          <td>
-            <a [href]="pr.url" target="_blank" rel="noopener noreferrer">
-              {{ pr.number }}
-            </a>
-          </td>
-          <td>{{ pr.branch }}</td>
-          <td>{{ pr.status }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="pull-requests-container" *ngIf="dataSource.data.length; else noPulls">
+  <div class="header">
+    <h2>Pull Requests - {{ repoName }}</h2>
   </div>
+
+  <table mat-table [dataSource]="dataSource" matSort #sort="matSort" class="mat-elevation-z1">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header-cell">Pull Request</th>
+      <td mat-cell *matCellDef="let pr">
+        <a [href]="pr.url" target="_blank" rel="noopener noreferrer">{{ pr.number }}</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="branch">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header-cell">Branch name</th>
+      <td mat-cell *matCellDef="let pr">{{ pr.branch }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-header-cell">Status</th>
+      <td mat-cell *matCellDef="let pr" [ngClass]="pr.status.toLowerCase()">{{ pr.status }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="rule-row"></tr>
+  </table>
 </div>
+
+<ng-template #noPulls>
+  <div class="empty-state">
+    <p class="title">No pull requests found...</p>
+    <p>This repository has no pull requests yet.</p>
+  </div>
+</ng-template>

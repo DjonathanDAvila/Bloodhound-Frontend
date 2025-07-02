@@ -3,8 +3,8 @@
   flex-direction: column;
   height: 100vh;
   width: 250px;
-  background-color: #1c1c1c;
-  color: white;
+  background-color: var(--surface); // antes: #1c1c1c
+  color: var(--color-text); // antes: white
   padding: 1rem;
 }
 
@@ -16,6 +16,7 @@
   img {
     width: 128px;
     height: 128px;
+    filter: var(--logo-filter);
   }
 }
 
@@ -29,7 +30,7 @@
     margin-bottom: 0.5rem;
     border-radius: 8px;
     text-decoration: none;
-    color: white;
+    color: var(--color-text); // antes: white
     font-weight: 500;
     transition: 0.3s;
 
@@ -38,7 +39,7 @@
     }
 
     &.active, &:hover {
-      background-color: #2d2d2d;
+      background-color: var(--border); // antes: #2d2d2d
     }
   }
 }
@@ -53,7 +54,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    color: #f44336;
+    color: #f44336; // mantido como alerta/erro
 
     mat-icon {
       margin-right: 0.5rem;

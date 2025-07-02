@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 
 import { PullRequest } from '../../../core/models/pull-request.model';
@@ -9,14 +11,15 @@ import { PullRequestService } from '../../../core/services/pull-request.service'
 @Component({
   selector: 'app-pull-requests',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTableModule, MatSortModule],
   templateUrl: './pull-requests.component.html',
   styleUrl: './pull-requests.component.scss'
 })
 export class PullRequestsComponent implements OnInit {
-  pullRequests: PullRequest[] = [];
   repoId = 0;
-  repoName = ""
+  repoName = '';
+  displayedColumns = ['number', 'branch', 'status'];
+  dataSource = new MatTableDataSource<PullRequest>();
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +27,9 @@ export class PullRequestsComponent implements OnInit {
     private http: HttpClient
   ) { }
 
-  ngOnInit() {
+  @ViewChild(MatSort, { static: false }) sort!: MatSort;
+
+  ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('repo');
     const nameParam = this.route.snapshot.paramMap.get('name');
     this.repoId = idParam ? +idParam : 0;
@@ -32,8 +37,21 @@ export class PullRequestsComponent implements OnInit {
 
     if (this.repoId > 0) {
       this.pullRequestService.getPullRequestsByRepo(this.repoId)
-        .subscribe(data => this.pullRequests = data);
+        .subscribe(data => {
+          this.dataSource.data = data;
+
+          // ⚠️ Espera um tick para garantir que o ViewChild e a tabela estejam prontos
+          setTimeout(() => {
+            if (this.sort) {
+              this.dataSource.sort = this.sort;
+              this.sort.active = 'number';
+              this.sort.direction = 'desc';
+              this.sort.sortChange.emit();
+            } else {
+              console.warn('Sort ainda não disponível!');
+            }
+          });
+        });
     }
-    console.log(this.pullRequests)
   }
 }

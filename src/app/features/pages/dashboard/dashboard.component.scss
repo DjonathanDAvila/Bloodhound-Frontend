@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  color: white;
+  color: var(--color-text);
 }
 
 h1 {
@@ -16,9 +16,10 @@ h1 {
   gap: 1rem;
 }
 
-.stat-card, .action-card {
-  background-color: #1c1c1c;
-  color: white;
+.stat-card,
+.action-card {
+  background-color: var(--card-bg);
+  color: var(--color-text);
   flex: 1;
   padding: 1rem;
   display: flex;
@@ -47,8 +48,8 @@ h1 {
 }
 
 .reviews-card {
-  background-color: #1c1c1c;
-  color: white;
+  background-color: var(--card-bg);
+  color: var(--color-text);
   padding: 2rem;
   text-align: center;
 }
@@ -61,7 +62,7 @@ h1 {
 
   mat-icon {
     font-size: 3rem;
-    color: #666;
+    color: var(--subtext); // antes: #666
   }
 
   h2 {
@@ -71,7 +72,7 @@ h1 {
 
   p {
     font-size: 1rem;
-    color: #bbb;
+    color: var(--subtext); // antes: #bbb
   }
 
   .actions {
@@ -80,33 +81,34 @@ h1 {
     margin-top: 1rem;
   }
 }
+
 :host {
   display: block;
   padding: 24px;
-  color: #ffffff;
-  background-color: #0f0f0f;
+  color: var(--color-text);
+  background-color: var(--background);
 }
 
 table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background-color: #1a1a1a;
+  background-color: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
 
   th {
     text-align: left;
     padding: 16px;
-    color: #aaaaaa;
+    color: var(--subtext);
     font-weight: 500;
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #2a2a2a;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border);
   }
 
   td {
     padding: 16px;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid var(--border);
     font-size: 14px;
   }
 
@@ -117,11 +119,11 @@ table {
   .font-mono {
     font-family: 'Courier New', Courier, monospace;
     font-size: 13px;
-    color: #cccccc;
+    color: var(--subtext);
   }
 
   .text-green-400 {
-    color: #4ade80;
+    color: #4ade80; // mantido: cor de status
   }
 
   .text-red-400 {
@@ -147,4 +149,3 @@ table {
     background-color: #ef4444;
   }
 }
-

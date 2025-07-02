@@ -19,7 +19,7 @@ export class SidebarNavigationComponent {
   logout() {
     localStorage.removeItem('token');
     localStorage.clear;
-    debugger
+    // debugger
     this.router.navigate(['']);
   }
 }

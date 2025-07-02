@@ -1,6 +1,6 @@
 .landing-container {
-  background-color: #111;
-  color: #fff;
+  color: var(--color-text);
+  background-color: var(--color-background);
   min-height: 100vh;
   padding: 1rem;
 
@@ -9,11 +9,6 @@
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-
-    .logo {
-      width: 128px;
-      height: 128px;
-    }
   }
 
   .main-content {
@@ -27,7 +22,7 @@
 
     .subtitle {
       margin-top: 0.5rem;
-      color: #ccc;
+      color: var(--subtext);
     }
 
     .steps {
@@ -37,7 +32,7 @@
       margin-top: 3rem;
 
       .step {
-        background: #1a1a1a;
+        background-color: var(--card-bg); // antes: #1a1a1a
         padding: 1.5rem;
         border-radius: 12px;
         width: 280px;
@@ -50,7 +45,7 @@
 
         h3 {
           margin-bottom: 0.5rem;
-          color: #aaa;
+          color: var(--subtext); // antes: #aaa
         }
 
         .title {
@@ -60,7 +55,7 @@
 
         .desc {
           font-size: 0.9rem;
-          color: #bbb;
+          color: var(--subtext); // antes: #bbb
           margin-top: 0.5rem;
         }
       }

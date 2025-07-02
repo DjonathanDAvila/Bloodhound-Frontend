@@ -4,12 +4,12 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px;
-  color: white;
+  color: var(--color-text); // Antes: white
 
   .logo {
     width: 128px;
     height: 128px;
-    // margin-bottom: 2px;
+    filter: var(--logo-filter); // Usa o filtro do tema
   }
 
   h2 {
@@ -19,7 +19,7 @@
   }
 
   .card {
-    background-color: #1e1e1e;
+    background-color: var(--card-bg); // Antes: #1e1e1e
     padding: 32px 24px;
     border-radius: 12px;
     width: 100%;
@@ -30,8 +30,8 @@
     align-items: center;
 
     .github-btn {
-      color: white;
-      border: 1px solid #444;
+      color: var(--color-text); // Antes: white
+      border: 1px solid var(--border, #444);
       background-color: transparent;
       width: 100%;
       max-width: 280px;
@@ -41,10 +41,10 @@
 
     .signup-text {
       font-size: 0.875rem;
-      color: #ccc;
+      color: var(--subtext); // Antes: #ccc
 
       .signup-link {
-        color: #3a6ea5;
+        color: var(--accent); // Usa o azul mantido no tema
         cursor: pointer;
         text-decoration: none;
 
@@ -55,7 +55,8 @@
     }
   }
 
-  .sign-in-container {
+  // Isso aqui estava duplicado e mal posicionado. Corrigido:
+  &.full-height {
     display: flex;
     justify-content: center;
     align-items: center;

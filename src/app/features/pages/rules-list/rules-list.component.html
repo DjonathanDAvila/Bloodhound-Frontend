@@ -1,7 +1,7 @@
 <div class="rules-container" *ngIf="rules.length; else noRules">
   <div class="header">
     <h2>Rules</h2>
-    <button mat-raised-button color="primary" (click)="onCreate()">
+    <button (click)="onCreate()">
       <mat-icon>add</mat-icon> Create a rule
     </button>
   </div>
@@ -9,7 +9,7 @@
   <table mat-table [dataSource]="rules" class="mat-elevation-z1">
 
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">ID</th>
       <td mat-cell *matCellDef="let rule">{{ rule.id }}</td>
     </ng-container>
 
@@ -21,24 +21,24 @@
     </ng-container> -->
 
     <ng-container matColumnDef="repositoryName">
-      <th mat-header-cell *matHeaderCellDef>RepositoryName</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">RepositoryName</th>
       <td mat-cell *matCellDef="let rule">
         <span class="rule-chip">{{ rule.repository.name }}</span>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">Name</th>
       <td mat-cell *matCellDef="let rule">{{ rule.title }}</td>
     </ng-container>
 
     <ng-container matColumnDef="text">
-      <th mat-header-cell *matHeaderCellDef>Rule</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">Rule</th>
       <td mat-cell *matCellDef="let rule">{{ rule.text }}</td>
     </ng-container>
 
     <ng-container matColumnDef="userId">
-      <th mat-header-cell *matHeaderCellDef>Created by</th>
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">Created by</th>
       <td mat-cell *matCellDef="let rule">{{ rule.userId }}</td>
     </ng-container>
 
@@ -63,8 +63,8 @@
     <p class="title">There are no rules...</p>
     <p>Go ahead and create a rule, which you can use to apply to any repository you want.</p>
     <div class="actions">
-      <button mat-raised-button color="primary" (click)="onCreate()">Create a rule</button>
-      <button mat-button>Rule templates</button>
+      <button  (click)="onCreate()">Create a rule</button>
+      <!-- <button >Rule templates</button> -->
     </div>
   </div>
 </ng-template>
